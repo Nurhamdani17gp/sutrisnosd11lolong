@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengumuman Kelulusan</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(to bottom right, #ffecec, #ffe6e6); margin: 0; padding: 0; }
+    header { background-color: #b3001b; color: white; text-align: center; padding: 40px 20px; border-bottom: 5px solid #ffb3b3; }
+    header h1 { margin: 0; font-size: 36px; }
+    header h2 { margin-top: 10px; font-size: 24px; }
+    header p { margin-top: 5px; font-size: 16px; }
+
+    .section { max-width: 700px; margin: 30px auto; background: white; padding: 25px 30px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+    .section h3 { text-align: center; color: #b3001b; }
+    .countdown { display: flex; justify-content: center; gap: 15px; font-size: 20px; margin-top: 15px; }
+    .countdown div { background: #ff4d4d; color: white; padding: 12px 18px; border-radius: 10px; }
+
+    input[type="text"] { padding: 12px; width: 100%; margin-top: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
+    button { padding: 12px 20px; background-color: #b3001b; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; margin-top: 10px; width: 100%; }
+    button:hover { background-color: #990017; }
+
+    #hasilKelulusan { font-size: 18px; margin-top: 15px; text-align: center; }
+    ul { padding-left: 20px; }
+
+    .kontak p { margin: 5px 0; }
+    footer { text-align: center; padding: 20px; background-color: #5c0011; color: white; margin-top: 40px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pengumuman Kelulusan</h1>
+    <h2>SD Negeri 11 Lolong</h2>
+    <p>Tahun Ajaran 2024/2025</p>
+  </header>
+
+  <div class="section">
+    <h3>Pengumuman Akan Dibuka Dalam:</h3>
+    <div class="countdown" id="countdown"></div>
+    <p style="text-align:center;">Pengumuman akan dibuka pada tanggal <strong>2 Juni 2025 pukul 18:00 WIB</strong></p>
+  </div>
+
+  <div class="section">
+    <h3>Informasi Penting</h3>
+    <p>Setelah pengumuman dibuka, siswa dapat melihat hasil kelulusan dengan memasukkan Nomor Induk Siswa Nasional (NISN) pada form yang tersedia di bawah.</p>
+    <ul>
+      <li>Pastikan Anda memiliki NISN yang benar</li>
+      <li>Hasil kelulusan bersifat final dan tidak dapat diganggu gugat</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>Cek Kelulusan</h3>
+    <input type="text" id="nisnInput" placeholder="Masukkan NISN">
+    <button onclick="cekKelulusan()">Cek</button>
+    <p id="hasilKelulusan"></p>
+  </div>
+
+  <div class="section kontak">
+    <h3>Kontak Sekolah</h3>
+    <p><strong>Alamat:</strong> Jalan Gajah Mada Depan AKBID DEPKES</p>
+    <p><strong>Email:</strong> sdn17gunungpangilun@yahoo.co.id</p>
+    <p><strong>Kecamatan:</strong> Padang Utara</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 OP SD Negeri 11 Lolong. Hak Cipta Dilindungi.</p>
+  </footer>
+
+  <script>
+    const countdownDate = new Date("June 1, 2025 09:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      if (distance < 0) {
+        clearInterval(interval);
+        countdownEl.innerHTML = "Pengumuman Telah Dibuka";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `
+        <div>${days} HARI</div>
+        <div>${hours} JAM</div>
+        <div>${minutes} MENIT</div>
+        <div>${seconds} DETIK</div>
+      `;
+    }, 1000);
+
+    const dataKelulusan = {
+      "0131976329": "Abdullah Ahmad",
+      "3138685425": "Abduzzoel Djalalil Ikhram Imaney",
+      "3123247626": "Agung Rama Alim",
+      "0138425629": "AQILAH AULIA WULANDARI",
+      "0133273581": "Aufar Atha Rasya Putra",
+      "3126522498": "Ayumi Fitrianzani",
+      "3116796358": "Bintang Prasetia Ramadhanu",
+      "3133172861": "Cita Laras Nabila",
+      "3138691717": "Dean Azizi Praver",
+      "0136595374": "Fiona Riska Effendi",
+      "3135377664": "Irene Putri Azra",
+      "0122128781": "JIHAD ALFATH SYAH",
+      "3134306191": "Kesyha Trie Yonanda",
+      "0126660349": "Khalifatul Nayfa",
+      "3124373477": "KHALIQ AQMAL",
+      "0138050024": "Kirana Aqheyza",
+      "3128973511": "Muhammad Zikkri",
+      "3135905312": "Nadine Aliya Jefrey",
+      "3136875449": "Nasywa Nabila Zahra",
+      "0137366778": "PANJI PURNA IRAWAN",
+      "3138810337": "Raffa Alfian Pratama",
+      "0127434548": "Regina Wisa",
+      "0133346464": "REYHAN DWI RAMADHAN",
+      "3134232251": "Thoriq Rihhadatul Aisy",
+      "3123051120": "Zikra Imam Hanafi"
+    };
+
+    function cekKelulusan() {
+      const nisn = document.getElementById("nisnInput").value.trim();
+      const nama = dataKelulusan[nisn];
+      const hasilEl = document.getElementById("hasilKelulusan");
+
+      if (new Date().getTime() < countdownDate) {
+        hasilEl.innerText = "Pengumuman belum dibuka.";
+        hasilEl.style.color = "black";
+        return;
+      }
+
+      if (nama) {
+        hasilEl.innerText = `Selamat ${nama}, Anda dinyatakan LULUS.`;
+        hasilEl.style.color = "green";
+      } else {
+        hasilEl.innerText = "NISN tidak ditemukan.";
+        hasilEl.style.color = "black";
+      }
+    }
+  </script>
+</body>
+</html>
